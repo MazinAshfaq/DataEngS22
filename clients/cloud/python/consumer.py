@@ -48,6 +48,7 @@ if __name__ == '__main__':
 
     # Process messages
     total_count = 0
+    c2 = 0
     try:
         while True:
             msg = consumer.poll(1.0)
@@ -65,8 +66,8 @@ if __name__ == '__main__':
                 record_key = msg.key()
                 record_value = msg.value()
                 data = json.loads(record_value)
-                count = data['count']
-                total_count += count
+                #count = data['count']
+                total_count += c2
                 print("Consumed record with key {} and value {}, \
                       and updated total count to {}"
                       .format(record_key, record_value, total_count))

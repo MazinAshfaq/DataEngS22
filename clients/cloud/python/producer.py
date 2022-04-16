@@ -29,6 +29,9 @@ import ccloud_lib
 
 if __name__ == '__main__':
 
+    file = open("bcsample.json")
+    data = json.load(file)
+
     # Read arguments and configurations and initialize
     args = ccloud_lib.parse_args()
     config_file = args.config_file
@@ -59,7 +62,7 @@ if __name__ == '__main__':
             print("Produced record to topic {} partition [{}] @ offset {}"
                   .format(msg.topic(), msg.partition(), msg.offset()))
 
-    for n in range(10):
+    for n in data:
         record_key = "alice"
         record_value = json.dumps({'count': n})
         print("Producing record: {}\t{}".format(record_key, record_value))
